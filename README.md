@@ -20,7 +20,7 @@ Needs Linux (or WSL2), an NVIDIA GPU, [uv](https://docs.astral.sh/uv/), `curl`, 
 `ffmpeg` built with libsoxr (`ffmpeg -version | grep soxr`).
 
 ```bash
-git clone <this repo> stemsep && cd stemsep
+git clone https://github.com/badwolf-ro/stemsep.git && cd stemsep
 ./setup.sh                        # python 3.12 venv + torch 2.11 + MSST, pinned in requirements.lock
 ./stemsep models                  # list models; weights download on first use into models/
 ln -s "$PWD/stemsep" ~/.local/bin/stemsep   # optional: put it on PATH
@@ -160,3 +160,9 @@ should rely on. And some catalog entries are extracted from commercial products
 - [Bandit v2 weights (Zenodo)](https://zenodo.org/records/12701995) · [bandit-v2 repo](https://github.com/kwatcharasupat/bandit-v2), Apache-2.0
 
 [ZFTurbo/Music-Source-Separation-Training]: https://github.com/ZFTurbo/Music-Source-Separation-Training
+
+## Licence
+
+stemsep's own code is MIT (see `LICENSE`). It downloads third-party model weights at run
+time; each checkpoint keeps the licence its authors published it under — check the source
+linked in `models.json` before using a model commercially.
