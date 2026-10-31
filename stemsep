@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# stemsep launcher - runs stemsep.py in this folder's own venv (built by ./setup.sh).
+S="$(cd "$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")" && pwd)"
+[ -x "$S/.venv/bin/python" ] || { echo "stemsep: no venv yet - run $S/setup.sh" >&2; exit 1; }
+export HF_HUB_DISABLE_TELEMETRY=1
+exec "$S/.venv/bin/python" "$S/stemsep.py" "$@"

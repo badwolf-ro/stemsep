@@ -1,0 +1,6 @@
+# rebuilt by ./setup.sh
+.venv/
+# model weights (300 MB - 1.1 GB each), downloaded on first use
+models/
+__pycache__/
+*.pyc

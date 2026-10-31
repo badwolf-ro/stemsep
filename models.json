@@ -1,0 +1,221 @@
+{
+  "_comment": "Model registry for stemsep. Config/checkpoint pairs taken from ZFTurbo/Music-Source-Separation-Training docs/pretrained_models.md. sdr values are MVSep Multisong (music) or DnR v3 test (cinema). Never mix a config with a checkpoint from a different row.",
+  "leap": {
+    "family": "music",
+    "type": "bs_roformer",
+    "sr": 44100,
+    "stems": [
+      "vocals",
+      "instrumental"
+    ],
+    "target_only": true,
+    "sdr": 11.76,
+    "size": "255M",
+    "desc": "BS-RoFormer Leap Xe (unwa) - best open 2-stem vocal model",
+    "cfg": "https://huggingface.co/noblebarkrr/mvsepless_resources/resolve/main/bs_roformer/bs_leap_xe_voc_unwa_config.yaml?download=true",
+    "ckpt": "https://huggingface.co/noblebarkrr/mvsepless_resources/resolve/main/bs_roformer/bs_leap_xe_voc_unwa.ckpt?download=true"
+  },
+  "bsroformer": {
+    "family": "music",
+    "type": "bs_roformer",
+    "sr": 44100,
+    "stems": [
+      "vocals",
+      "instrumental"
+    ],
+    "target_only": true,
+    "sdr": 10.87,
+    "size": "594M",
+    "desc": "BS-RoFormer viperx ep317 - the old default, kept as an ensemble partner",
+    "cfg": "https://raw.githubusercontent.com/ZFTurbo/Music-Source-Separation-Training/main/configs/viperx/model_bs_roformer_ep_317_sdr_12.9755.yaml",
+    "ckpt": "https://github.com/TRvlvr/model_repo/releases/download/all_public_uvr_models/model_bs_roformer_ep_317_sdr_12.9755.ckpt"
+  },
+  "melband": {
+    "family": "music",
+    "type": "mel_band_roformer",
+    "sr": 44100,
+    "stems": [
+      "vocals",
+      "instrumental"
+    ],
+    "target_only": true,
+    "sdr": 10.98,
+    "size": "394M",
+    "desc": "Mel-Band RoFormer KimberleyJensen - different error signature to bsroformer, ensembles well",
+    "cfg": "https://raw.githubusercontent.com/ZFTurbo/Music-Source-Separation-Training/main/configs/KimberleyJensen/config_vocals_mel_band_roformer_kj.yaml",
+    "ckpt": "https://huggingface.co/KimberleyJSN/melbandroformer/resolve/main/MelBandRoformer.ckpt"
+  },
+  "polarformer": {
+    "family": "music",
+    "type": "bs_polarformer",
+    "sr": 44100,
+    "stems": [
+      "vocals",
+      "instrumental"
+    ],
+    "target_only": true,
+    "sdr": 11.0,
+    "size": "?",
+    "desc": "BS PolarFormer fp16 - highest-SDR open 2-stem model",
+    "cfg": "https://github.com/ZFTurbo/Music-Source-Separation-Training/releases/download/v1.0.20/model_bs_polarformer_float16.yaml",
+    "ckpt": "https://github.com/ZFTurbo/Music-Source-Separation-Training/releases/download/v1.0.20/model_bs_polarformer_float16.ckpt"
+  },
+  "sw": {
+    "family": "music",
+    "type": "bs_roformer",
+    "sr": 44100,
+    "stems": [
+      "bass",
+      "drums",
+      "other",
+      "vocals",
+      "guitar",
+      "piano"
+    ],
+    "sdr": 11.3,
+    "size": "667M",
+    "desc": "BS-RoFormer SW (jarredou fix) - 6 stems, beats scnet-xl on every shared stem",
+    "cfg": "https://huggingface.co/noblebarkrr/mvsepless_resources/resolve/main/bs_roformer/bs_6stem_fixed_config.yaml?download=true",
+    "ckpt": "https://huggingface.co/noblebarkrr/mvsepless_resources/resolve/main/bs_roformer/bs_6stem_fixed.ckpt?download=true"
+  },
+  "scnet-xl": {
+    "family": "music",
+    "type": "scnet",
+    "sr": 44100,
+    "stems": [
+      "bass",
+      "drums",
+      "vocals",
+      "other"
+    ],
+    "sdr": 9.72,
+    "size": "1.1G",
+    "desc": "SCNet XL IHF - best open 4-stem model (MUSDB avg 10.08)",
+    "cfg": "https://github.com/ZFTurbo/Music-Source-Separation-Training/releases/download/v1.0.15/config_musdb18_scnet_xl_more_wide_v5.yaml",
+    "ckpt": "https://github.com/ZFTurbo/Music-Source-Separation-Training/releases/download/v1.0.15/model_scnet_ep_36_sdr_10.0891.ckpt"
+  },
+  "htdemucs": {
+    "family": "music",
+    "type": "htdemucs",
+    "sr": 44100,
+    "stems": [
+      "drums",
+      "bass",
+      "other",
+      "vocals"
+    ],
+    "sdr": 9.16,
+    "size": "319M",
+    "desc": "HTDemucs4 - fast 4-stem fallback, two generations behind on vocals",
+    "cfg": "https://raw.githubusercontent.com/ZFTurbo/Music-Source-Separation-Training/main/configs/config_musdb18_htdemucs.yaml",
+    "ckpt": "https://dl.fbaipublicfiles.com/demucs/hybrid_transformer/955717e8-8726e21a.th"
+  },
+  "bandit-v2": {
+    "family": "cinema",
+    "type": "bandit_v2",
+    "sr": 48000,
+    "stems": [
+      "speech",
+      "music",
+      "sfx"
+    ],
+    "sdr": 10.72,
+    "size": "426M",
+    "desc": "Bandit v2 multilingual, DnR v3, native 48k - best OPEN cinema model",
+    "cfg": "https://raw.githubusercontent.com/ZFTurbo/Music-Source-Separation-Training/main/configs/config_dnr_bandit_v2_mus64.yaml",
+    "ckpt": "https://zenodo.org/api/records/12701995/files/checkpoint-multi.ckpt/content",
+    "langs": {
+      "multi": "checkpoint-multi.ckpt",
+      "eng": "checkpoint-eng.ckpt",
+      "deu": "checkpoint-deu.ckpt",
+      "fra": "checkpoint-fra.ckpt",
+      "spa": "checkpoint-spa.ckpt",
+      "cmn": "checkpoint-cmn.ckpt",
+      "fao": "checkpoint-fao.ckpt"
+    }
+  },
+  "bandit-plus": {
+    "family": "cinema",
+    "type": "bandit",
+    "sr": 44100,
+    "stems": [
+      "speech",
+      "music",
+      "effects"
+    ],
+    "sdr": 9.31,
+    "size": "?",
+    "desc": "BandIt Plus, DnR v2 - English-centric predecessor, kept for A/B",
+    "cfg": "https://github.com/ZFTurbo/Music-Source-Separation-Training/releases/download/v.1.0.3/config_dnr_bandit_bsrnn_multi_mus64.yaml",
+    "ckpt": "https://github.com/ZFTurbo/Music-Source-Separation-Training/releases/download/v.1.0.3/model_bandit_plus_dnr_sdr_11.47.chpt"
+  },
+  "denoise": {
+    "family": "repair",
+    "type": "mel_band_roformer",
+    "sr": 44100,
+    "stems": [
+      "dry",
+      "other"
+    ],
+    "sdr": 27.99,
+    "size": "?",
+    "desc": "MelBand RoFormer denoise (aufr33) - broadband hiss/noise off a finished stem",
+    "cfg": "https://github.com/ZFTurbo/Music-Source-Separation-Training/releases/download/v.1.0.7/model_mel_band_roformer_denoise.yaml",
+    "ckpt": "https://github.com/ZFTurbo/Music-Source-Separation-Training/releases/download/v.1.0.7/denoise_mel_band_roformer_aufr33_sdr_27.9959.ckpt"
+  },
+  "denoise-aggr": {
+    "family": "repair",
+    "type": "mel_band_roformer",
+    "sr": 44100,
+    "stems": [
+      "dry",
+      "other"
+    ],
+    "sdr": 27.98,
+    "size": "?",
+    "desc": "Same, aggressive variant - takes more, costs fullness",
+    "cfg": "https://github.com/ZFTurbo/Music-Source-Separation-Training/releases/download/v.1.0.7/model_mel_band_roformer_denoise.yaml",
+    "ckpt": "https://github.com/ZFTurbo/Music-Source-Separation-Training/releases/download/v.1.0.7/denoise_mel_band_roformer_aufr33_aggr_sdr_27.9768.ckpt"
+  },
+  "dereverb": {
+    "family": "repair",
+    "type": "mel_band_roformer",
+    "sr": 44100,
+    "stems": [
+      "noreverb",
+      "reverb"
+    ],
+    "sdr": 19.17,
+    "size": "?",
+    "desc": "MelBand RoFormer dereverb (anvuew) - pulls room off dialogue/vocals",
+    "cfg": "https://huggingface.co/anvuew/dereverb_mel_band_roformer/resolve/main/dereverb_mel_band_roformer_anvuew.yaml",
+    "ckpt": "https://huggingface.co/anvuew/dereverb_mel_band_roformer/resolve/main/dereverb_mel_band_roformer_anvuew_sdr_19.1729.ckpt"
+  },
+  "crowd": {
+    "family": "repair",
+    "type": "mel_band_roformer",
+    "sr": 44100,
+    "stems": [
+      "crowd",
+      "other"
+    ],
+    "sdr": 8.71,
+    "size": "?",
+    "desc": "MelBand RoFormer crowd removal (aufr33/viperx) - applause, audience, stadium",
+    "cfg": "https://github.com/ZFTurbo/Music-Source-Separation-Training/releases/download/v.1.0.4/model_mel_band_roformer_crowd.yaml",
+    "ckpt": "https://github.com/ZFTurbo/Music-Source-Separation-Training/releases/download/v.1.0.4/mel_band_roformer_crowd_aufr33_viperx_sdr_8.7144.ckpt"
+  },
+  "apollo": {
+    "family": "repair",
+    "type": "apollo",
+    "sr": 44100,
+    "stems": [
+      "restored"
+    ],
+    "sdr": null,
+    "size": "?",
+    "desc": "Apollo (JusperLee) - repairs codec + separation artifacts. Run LAST, not as a second separation pass",
+    "cfg": "https://raw.githubusercontent.com/ZFTurbo/Music-Source-Separation-Training/main/configs/config_apollo.yaml",
+    "ckpt": "https://huggingface.co/JusperLee/Apollo/resolve/main/pytorch_model.bin"
+  }
+}
